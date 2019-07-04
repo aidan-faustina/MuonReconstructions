@@ -13,7 +13,7 @@ To run process_hits_v2.py, add it into your miniDT folder and replace the existi
 
 ### Running process_hits_v2.py
    * using raw external trigger:  
-     `./process_hits_v2.py -re <list of input TXT files>` ###Currently NOT working
+     `./process_hits_v2.py -re <list of input TXT files>` (Currently NOT working)
    * using raw external trigger, with `t0` determined by meantimer (for avoiding jitter of the external trigger):  
      `./process_hits_v2.py -ura <list of input TXT files>`
    * using meantimer to find aligned hits in each orbit (external trigger not used at all):
