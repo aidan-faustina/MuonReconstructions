@@ -1,10 +1,22 @@
-### PathReconstruction
-PathReconstruction is a program that will create local and global reconstructions of events in the muon chamber
+### Path Reconstruction
+Two different versions of a program for the local and global reconstruction of muon tracks are provided. The details on how to use each one are below:
 
-To use,simply put the desired file path into local_reconstruction_xleft_xright(<your file name here>) and make sure that each line of the input file is formatted as follows (same as output for original process_hits.py):
-  event number,hits,< SL, LAYER, X_POS_LEFT, X_POS_RIGHT, TIMENS for each hit> 
+1. path_reconstruction_timens
+This version should run directly on the output of the current version of process_hits.py, which has each line of the input file formatted as follows:
+  event number,# of hits,< SL, LAYER, X_POS_LEFT, X_POS_RIGHT, TIMENS for each hit>
+  
+2. path_reconstruction_zpos
+This version runs on a differently formatted input,so it requires you to modify your processing program so that each line of its output is formatted as follows:
+  event number,# of hits,orbit count for the event, < SL, LAYER, X_POS_LEFT, X_POS_RIGHT, ZPOS for each hit> 
+I recommend using this version and output for the processing file because the calculation for ZPOS does not need to be repeated and orbit count is used as a marker for the events,which is unambigous, whereas event number varies based on the selection of data processed.
 
-Further instructions on how to customize the output are written in comments at the end,above the relevant functions
+To use either version,simply put the appropriate file path into local_reconstruction_xleft_xright('<insert file path here>') and adjust the parameters/plot outputs to your choosing
+  
+There are several different parameters that determine acceptance cuts for local/global reconstruction that can be found at the beginning of the file and you may find it appropriate to adjust them. Details on each one are provided in comments next to the values I have set as defaults.
+
+By default the programs will not output any plots but you have the option to display local reconstructions, 2d plane reconstructions,3d global reconstructions, or a combination of the three. Instructions on how to activate the plots you would like to be displayed are in the comments at the end of the program. 
+
+Note that if you are using jupyter notebook, local reconstructions and the option 'plot3d' do not work together,the comments have further details on how to get around this.
 
 ### process_hits_v2.py
 process_hits_v2.py is a version of the original process_hits that does the processing and reconstruction simultaneously. It outputs both local and global reconstructions of each acceptable event in .png file format as well as a text file in the same format as the original with TIMENS replaced by Z_POS to avoid repead calculations in reconstruction. 
@@ -22,6 +34,4 @@ To run process_hits_v2.py, add it into your miniDT folder and replace the existi
    * to only process a certain subset of the events add --range start end
    * to plot a certain subset of reconstructions together on one figure use -j start end
 
-NOTE: both programs currently only reconstruct the BEST fit for any given event, meaning that even if an event has more than one muon,only ONE track is reconstructed. I am currently testing ways to reconstruct all paths in an event without sacrificing quality. 
-
-Please let me know if you find any issues or have any questions!
+Please let me know if you find any issues or have any questions! You can reach me by email at aidanf@mit.edu
