@@ -1,15 +1,21 @@
 ### Path Reconstruction
 Two different versions of a program for the local and global reconstruction of muon tracks are provided. The details on how to use each one are below:
 
-1. path_reconstruction_timens
+### 1. path_reconstruction_timens.ipynb
+
 This version should run directly on the output of the current version of process_hits.py, which has each line of the input file formatted as follows:
+
   event number,# of hits,< SL, LAYER, X_POS_LEFT, X_POS_RIGHT, TIMENS for each hit>
   
-2. path_reconstruction_zpos
+### 2. path_reconstruction_zpos.ipynb
+
 This version runs on a differently formatted input,so it requires you to modify your processing program so that each line of its output is formatted as follows:
+
   event number,# of hits,orbit count for the event, < SL, LAYER, X_POS_LEFT, X_POS_RIGHT, ZPOS for each hit> 
+  
 I recommend using this version and output for the processing file because the calculation for ZPOS does not need to be repeated and orbit count is used as a marker for the events,which is unambigous, whereas event number varies based on the selection of data processed.
 
+### Running path_reconstruction
 To use either version,simply put the appropriate file path into local_reconstruction_xleft_xright('<insert file path here>') and adjust the parameters/plot outputs to your choosing
   
 There are several different parameters that determine acceptance cuts for local/global reconstruction that can be found at the beginning of the file and you may find it appropriate to adjust them. Details on each one are provided in comments next to the values I have set as defaults.
