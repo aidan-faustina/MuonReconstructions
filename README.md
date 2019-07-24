@@ -3,7 +3,7 @@ Two different versions of a program for the local and global reconstruction of m
 
 ### 1. path_reconstruction_timens.ipynb
 
-This version should run directly on the output of the current version of process_hits.py, which has each line of the input file formatted as follows:
+This version should run directly on the output of the current version of process_hits.py, which has each line of the file formatted as follows:
 
   event number,# of hits,< SL, LAYER, X_POS_LEFT, X_POS_RIGHT, TIMENS for each hit>
   
@@ -16,7 +16,7 @@ This version runs on a differently formatted input,so it requires you to modify 
 I recommend using this version and output for the processing file because the calculation for ZPOS does not need to be repeated and orbit count is used as a marker for the events,which is unambigous, whereas event number varies based on the selection of data processed.
 
 ### Running path_reconstruction
-To use either version,simply put the appropriate file path into local_reconstruction_xleft_xright('<insert file path here>') and adjust the parameters/plot outputs to your choosing
+To use either version,simply put the appropriate file path into local_reconstruction_xleft_xright('insert file path here') and adjust the parameters/plot outputs to your choosing
   
 There are several different parameters that determine acceptance cuts for local/global reconstruction that can be found at the beginning of the file and you may find it appropriate to adjust them. Details on each one are provided in comments next to the values I have set as defaults.
 
@@ -39,5 +39,7 @@ To run process_hits_v2.py, add it into your miniDT folder and replace the existi
      I recommend using the parameters below as well, otherwise a lot of plots will be output and it will run quite slowly
    * to only process a certain subset of the events add --range start end
    * to plot a certain subset of reconstructions together on one figure use -j start end
+  
+Note: process_hits.py has been updated since I wrote this,so you will likely find it more convenient to just run the updated process_hits and path_reconstruction programs separately.
 
 Please let me know if you find any issues or have any questions! You can reach me by email at aidanf@mit.edu
