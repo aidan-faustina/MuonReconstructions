@@ -7,7 +7,11 @@ This version should run directly on the output of the current version of process
 
   event number,# of hits,< SL, LAYER, X_POS_LEFT, X_POS_RIGHT, TIMENS for each hit>
   
-### 2. path_reconstruction_zpos.ipynb
+### 2. path_reconstruction_timens_jitter.ipynb
+
+This version is the same as above but it allows you to adjust for a jitter in the trigger signal and has slightly different default parameters, including the approximate jitter I found for Run 617. However, it is likely more efficient to adjust for a jitter in the processing stage so I recommend using this version to just calibrate parameters and primarily use the version below for plotting, etc.
+  
+### 3. path_reconstruction_zpos.ipynb
 
 This version runs on a differently formatted input,so it requires you to modify your processing program so that each line of its output is formatted as follows:
 
